@@ -28,6 +28,15 @@ namespace Mine.Views
             BindingContext = this;
         }
 
+        /// <summary>
+        /// Update the Display Value when the Stepper Changes. 
+        /// </summary>
+        void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            ValueValue.Text = String.Format("{0}", e.NewValue); 
+        }
+       
+
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", Item);
