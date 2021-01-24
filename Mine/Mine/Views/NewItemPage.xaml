@@ -26,7 +26,7 @@
                 Orientation="Horizontal">
             
                 <Stepper
-                    Value="{Binding Data.FallbackValue, Mode=TwoWay}"
+                    Value="{Binding Item.Value, Mode=TwoWay}"
                     Minimum="0"
                     Maximum="10"
                     Increment="1"
