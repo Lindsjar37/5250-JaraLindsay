@@ -37,9 +37,24 @@ namespace Mine.Services
                 }
             }
 
-        public Task<bool> CreateAsync(ItemModel item)
+        /// <summary>
+        /// Create and store an item 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public async Task<bool> CreateAsync(ItemModel item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                return false; 
+            }
+            var result = await Database.InsertAsync(item);
+            if (result == 0)
+            {
+                return false; 
+            }
+            // Item was created 
+            return true; 
         }
 
         public Task<bool> UpdateAsync(ItemModel item)
@@ -57,6 +72,11 @@ namespace Mine.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Store items in item index 
+        /// </summary>
+        /// <param name="forceRefresh"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<ItemModel>> IndexAsync(bool forceRefresh = false)
         {
             var result = await Database.Table<ItemModel>().ToListAsync();
