@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mine.Helpers
 {
-    class DiceHelper
+    public static class DiceHelper
     {
         private static Random rnd = new Random();
 
